@@ -28,6 +28,15 @@ public class Usuario {
 	@Size(min = 5, max = 100)
 	private String senha;
 
+	public Usuario(String nome, @NotEmpty @Size(min = 5, max = 100) String login,
+			@NotEmpty @Size(min = 5, max = 100) String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+	}
+
 	public Long getId() {
 		return id;
 	}
