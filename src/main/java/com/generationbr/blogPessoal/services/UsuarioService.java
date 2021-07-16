@@ -30,7 +30,7 @@ public class UsuarioService {
 
 	public Optional<UsuarioLogin> logar (Optional<UsuarioLogin> usuarioParaLogar) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<Usuario> usuario = repositoryU.findByUsuario(usuarioParaLogar.get().getLogin());
+		Optional<Usuario> usuario = repositoryU.findByLogin(usuarioParaLogar.get().getLogin());
 		
 		if(usuario.isPresent()) {
 			//comparando senha encriptada no banco com senha utilizada no login
