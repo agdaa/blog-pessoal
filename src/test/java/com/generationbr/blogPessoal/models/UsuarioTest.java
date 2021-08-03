@@ -28,7 +28,7 @@ class UsuarioTest {
 	@BeforeEach
 	public void start() {
 
-		usuario = new Usuario("Agda","agda@email.com", "agda");
+		usuario = new Usuario();
 
 	};
 
@@ -42,7 +42,7 @@ class UsuarioTest {
 	@Test
 	void testValidaAtributosNull() {
 
-		usuario = new Usuario("Zika", null, "zikaf24@gmail.com");
+		usuario = new Usuario();
 
 		Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuario);
 		System.out.println(violacao.toString());

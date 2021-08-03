@@ -1,12 +1,18 @@
 package com.generationbr.blogPessoal.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -28,14 +34,13 @@ public class Usuario {
 	@Size(min = 5, max = 100)
 	private String senha;
 
-	public Usuario(String nome, @NotEmpty @Size(min = 5, max = 100) String login,
-			@NotEmpty @Size(min = 5, max = 100) String senha) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-	}
+	private String foto;
+	
+	private String tipoUsuario;
+	
+	@OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("autor")
+	private List<Postagem> postagens;
 
 	public Long getId() {
 		return id;
@@ -69,4 +74,20 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	
 }

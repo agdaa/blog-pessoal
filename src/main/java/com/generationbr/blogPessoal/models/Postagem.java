@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,6 +39,10 @@ public class Postagem {
 	@JsonIgnoreProperties({"postagens"})
 	private Tema tema;
 
+	@ManyToOne
+	@JsonIgnoreProperties({"postagens"})
+	private Usuario autor;
+	
 	public long getId() {
 		return id;
 	}
@@ -76,6 +81,14 @@ public class Postagem {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+
+	public Usuario getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
 	}
 
 }

@@ -25,7 +25,7 @@ class UsuarioRepositoryTest {
 	@Test
 	public void start() {
 
-		usuario = new Usuario("Agda","agda@email.com", "agda");
+		usuario = new Usuario();
 		if(repositoryUsuario.findByLogin(usuario.getLogin()) != null) {
 			repositoryUsuario.save(usuario);
 		}
